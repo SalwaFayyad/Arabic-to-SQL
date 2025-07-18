@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookstore Text-to-SQL Converter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="container" dir="rtl">
+    <header>
+      <h1><i class="fas fa-book"></i> متجر الكتب نص إلى استعلام</h1>
+      <p>اسأل بأسلوبك الطبيعي عن مجموعتنا من الكتب وشوف كيف تتحول أسئلتك لاستعلامات SQL مع النتائج</p>
+    </header>
+  </div>
+
+  <main dir="rtl" style="text-align: right;">
+    <div class="card">
+      <div class="card-header"><i class="fas fa-search"></i> شو حابب تعرف عن الكتب؟</div>
+      <div class="card-body">
+        <p>!بدّك تعرف عن كتبنا؟ احكي بطريقتك، وإحنا بنساعدك</p>
+        <br />
+        <div class="input-section">
+          <input type="text" id="question-input" placeholder='مثال: مين ألّف كتاب "الليلة الثانية عشرة"؟' />
+          <button id="generate-btn"><i class="fas fa-bolt"></i> أنشئ الاستعلام</button>
+        </div>
+        <p>جرب هاي الأمثلة:</p>
+        <div class="examples">
+          <div class="example-chip">مين الكاتب تبع "فى فقه الصراع على القدس وفلسطين"؟</div>
+          <div class="example-chip">ايش الكتب اللي نزلت سنة 2020؟</div>
+          <div class="example-chip">قديش حق "الاعترافات"؟</div>
+          <div class="example-chip">شو سعر كتاب "روائع الأوبرا العالمية"؟</div>
+          <div class="example-chip">شو الكتب الموجودة تحت المجال الفرعي 'الأدب الإسلامي'؟</div>
+          <div class="example-chip">هل في كتب كتبها أدهم شرقاوي؟</div>
+          <div class="example-chip"> دلني على كتاب بيحكي عن التحفيز؟</div>
+          <div class="example-chip"> اعطيني كتاب بيوصف السيرة النبوية؟</div>
+          <div class="example-chip">اعطيني عدد صفحات كتاب "تسبيح الروح"</div>
+          <div class="example-chip">ما الكتُب التي كتبها بيار إميل طوبيا وما هي أسعارها؟ </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><i class="fas fa-code"></i> الاستعلام</div>
+      <div class="card-body">
+        <div class="sql-display" id="sql-display" style="direction: ltr; text-align: left;">SELECT * FROM
+          books LIMIT 5;
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header"><i class="fas fa-table"></i> نتيجة الاستعلام</div>
+      <div class="card-body">
+        <div id="single-result" style="margin-top: 1em; font-size: 1.2rem; color: #2c3e50; font-weight: bold;"></div>
+        <div class="table-container">
+          <table id="results-table"></table>
+          <div id="text-output" style="white-space: pre-wrap; margin-top: 1em;"></div>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

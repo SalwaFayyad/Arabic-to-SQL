@@ -1,0 +1,5 @@
+transformers
+flask
+torch
+pandas
+duckdb
